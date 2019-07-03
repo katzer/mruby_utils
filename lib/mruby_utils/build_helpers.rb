@@ -67,7 +67,9 @@ module MRuby
     #                              Defaults to: true
     # @param [ Boolean ] tiny      Build with tiny ssh support for sftp
     #                              Defaults to: false
-    def configure_libssh2(openssl: false, threading: false, zlib: true, tiny: false)
+    # @param [ Boolean ] debug     Build with debug flag and enable tracing
+    #                              Defaults to: false
+    def configure_libssh2(openssl: false, threading: false, zlib: true, tiny: false, debug: false)
       linker.libraries << 'crypto' if openssl
 
       [cc, cxx].each do |cc|
@@ -75,6 +77,7 @@ module MRuby
         cc.defines += %w[LIBSSH2_HAVE_ZLIB ZLIB_STATIC HAVE_UNISTD_H] if zlib
         cc.defines += %w[MRB_SSH_LINK_CRYPTO LIBSSH2_OPENSSL] if openssl
         cc.defines += %w[MBEDTLS_THREADING_PTHREAD MBEDTLS_THREADING_C] if threading
+        cc.defines += %w[LIBSSH2DEBUG MRB_SSH_DEBUG] if debug
       end
     end
   end
