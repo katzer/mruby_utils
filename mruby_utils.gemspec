@@ -22,7 +22,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'mruby_utils'
-  spec.version       = '1.2.0'
+  spec.version       = '1.3.0'
   spec.authors       = ['Sebastián Katzer']
   spec.email         = ['katzer@appplant.de']
 
