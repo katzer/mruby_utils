@@ -83,17 +83,7 @@ module MRuby
         cc.defines += %w[LIBSSH2DEBUG MRB_SSH_DEBUG] if debug
       end
 
-      self.libssh2_source = source if source
-    end
-
-    # Override the github repo from where to download the libssh2 source code.
-    #
-    # @param [ String ] github A format like "account/repo#branch"
-    #
-    # @return [ Void ]
-    def libssh2_source=(github)
-      require File.join(gem_clone_dir, 'mruby-ssh/lib/ssh/downloader')
-      SSH::Downloader.add_source :libssh2, github: github
+      ENV['LIBSSH2_SOURCE'] = source if source
     end
   end
 end

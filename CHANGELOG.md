@@ -1,5 +1,9 @@
 ## Release Notes: _mruby_utils_
 
+### 1.4.1 (26.07.2019)
+
+- Fixed issue with `source:` parameter.
+
 ### 1.4.0 (26.07.2019)
 
 - Added `source:` parameter to `configure_libssh2()`.
