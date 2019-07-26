@@ -50,7 +50,7 @@ module MRuby
     #
     # @return [ Void ]
     def glibc_version=(version)
-      return if !ENV['GLIBC_HEADERS'] || is_a?(MRuby::CrossBuild)
+      return if !ENV['GLIBC_HEADERS'] || is_a?(CrossBuild)
 
       [cc, cxx].each do |cc|
         cc.flags << "-include #{ENV['GLIBC_HEADERS']}/x64/force_link_glibc_#{version}.h"
@@ -69,7 +69,10 @@ module MRuby
     #                              Defaults to: false
     # @param [ Boolean ] debug     Build with debug flag and enable tracing
     #                              Defaults to: false
-    def configure_libssh2(openssl: false, threading: false, zlib: true, tiny: false, debug: false)
+    # @param [ Boolean ] source    Github repo from where to download the source
+    #
+    # @return [ Void ]
+    def configure_libssh2(openssl: false, threading: false, zlib: true, tiny: false, debug: false, source: nil)
       linker.libraries << 'crypto' if openssl
 
       [cc, cxx].each do |cc|
@@ -79,6 +82,18 @@ module MRuby
         cc.defines += %w[MBEDTLS_THREADING_PTHREAD MBEDTLS_THREADING_C] if threading
         cc.defines += %w[LIBSSH2DEBUG MRB_SSH_DEBUG] if debug
       end
+
+      self.libssh2_source = source if source
+    end
+
+    # Override the github repo from where to download the libssh2 source code.
+    #
+    # @param [ String ] github A format like "account/repo#branch"
+    #
+    # @return [ Void ]
+    def libssh2_source=(github)
+      require File.join(gem_clone_dir, 'mruby-ssh/lib/ssh/downloader')
+      SSH::Downloader.add_source :libssh2, github: github
     end
   end
 end
