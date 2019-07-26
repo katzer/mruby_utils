@@ -1,13 +1,13 @@
 PATH
   remote: .
   specs:
-    mruby_utils (1.2.0)
+    mruby_utils (1.4.0)
       rake (>= 11.0.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
-    rake (12.3.2)
+    rake (12.3.3)
 
 PLATFORMS
   ruby
