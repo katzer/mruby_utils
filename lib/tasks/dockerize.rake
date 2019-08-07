@@ -30,9 +30,6 @@ compile: &defaults
   working_dir: /home/mruby/code
   volumes:
     - .:/home/mruby/code:rw
-  environment:
-    MRUBY_VERSION: ${MRUBY_VERSION}
-    MRUBY_CONFIG: build_config.rb
   command: rake compile
 test:
   <<: *defaults

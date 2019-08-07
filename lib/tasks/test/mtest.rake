@@ -24,10 +24,8 @@ desc 'run unit tests'
 task 'test:mtest' => :environment do
   if in_a_docker_container? || ENV['MRUBY_CLI_LOCAL']
     %w[mruby:setup mruby:tuneup compile].each { |t| Rake::Task[t].invoke }
-    MRuby.each_target do |t|
-      t.enable_bintest = false
-      t.run_test if t.test_enabled?
-    end
+    MRuby.each_target { |t| t.enable_bintest = false }
+    chdir(ENV['MRUBY_ROOT']) { MRuby.each_target { run_test if test_enabled? } }
   else
     docker_run 'mtest'
   end

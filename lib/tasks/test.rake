@@ -24,7 +24,7 @@ desc 'run all tests'
 task test: 'environment' do
   if in_a_docker_container? || ENV['MRUBY_CLI_LOCAL']
     %w[setup tuneup].each { |t| Rake::Task["mruby:#{t}"].invoke }
-    Dir.chdir('mruby') { Rake::Task['mruby:test'].invoke }
+    chdir(ENV['MRUBY_ROOT']) { Rake::Task['mruby:test'].invoke }
   else
     docker_run 'test'
   end

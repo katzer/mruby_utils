@@ -24,7 +24,7 @@ desc 'run integration tests'
 task 'test:bintest' => :environment do
   if in_a_docker_container? || ENV['MRUBY_CLI_LOCAL']
     %w[mruby:setup mruby:tuneup compile].each { |t| Rake::Task[t].invoke }
-    Dir.chdir('mruby') { MRuby.each_target { run_bintest if bintest_enabled? } }
+    chdir(ENV['MRUBY_ROOT']) { MRuby.each_target { run_bintest if bintest_enabled? } }
   else
     docker_run 'bintest'
   end

@@ -2,8 +2,13 @@
 
 ### 1.4.2 (07.08.2019)
 
-- Change default value of `$MRUBY_VERSION` to `"stable"`.
-- Change default value of `$MRUBY_BUILD_DIR` to `"build"`.
+- Fixed run `rake test:mtest` from `MRUBY_ROOT`.
+- Added more logging in verbose mode.
+
+### 1.4.2 (07.08.2019)
+
+- Changed default value of `$MRUBY_VERSION` to `"stable"`.
+- Changed default value of `$MRUBY_BUILD_DIR` to `"build"`.
 
 ### 1.4.1 (26.07.2019)
 

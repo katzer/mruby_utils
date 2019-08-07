@@ -28,22 +28,21 @@ task release: 'environment' do
     spec         = MRuby::Gem.current
     version      = spec.version || 'unknown'
     release_dir  = "releases/v#{version}"
-    release_path = Dir.pwd + "/#{release_dir}"
+    release_path = File.join(pwd, release_dir)
     app_name     = "#{spec.name}-#{version}"
 
-    FileUtils.mkdir_p(release_path)
+    mkdir_p release_path
 
     MRuby.each_target do
       bin  = "#{build_dir}/bin/#{exefile(spec.name)}"
       arch = "#{app_name}-#{name}"
 
-      FileUtils.mkdir_p(name)
-      FileUtils.cp(bin, name)
+      mkdir_p name
+      cp bin, name
 
-      puts "Writing #{release_dir}/#{arch}.tgz"
-      `tar czf #{release_path}/#{arch}.tgz #{name}`
+      sh "tar czf #{release_path}/#{arch}.tgz #{name}"
 
-      FileUtils.rm_rf(name)
+      rm_rf name
     end
   else
     docker_run 'release'
