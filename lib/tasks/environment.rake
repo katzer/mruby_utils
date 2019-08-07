@@ -23,5 +23,6 @@
 task :environment do
   ENV['MRUBY_VERSION'] ||= 'stable'
   ENV['MRUBY_ROOT']      = File.expand_path('mruby')
+  ENV['MRUBY_BUILD_DIR'] = File.expand_path('build')
   ENV['MRUBY_CONFIG']    = File.expand_path(ENV['MRUBY_CONFIG'] || 'build_config.rb')
 end
