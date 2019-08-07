@@ -1,5 +1,10 @@
 ## Release Notes: _mruby_utils_
 
+### 1.4.2 (07.08.2019)
+
+- Change default value of `$MRUBY_VERSION` to `"stable"`.
+- Change default value of `$MRUBY_BUILD_DIR` to `"build"`.
+
 ### 1.4.1 (26.07.2019)
 
 - Fixed issue with `source:` parameter.
