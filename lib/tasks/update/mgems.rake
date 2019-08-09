@@ -22,7 +22,7 @@
 
 desc 'update all git based mrbgems'
 task 'update:mgems' => :environment do
-  Dir.glob("#{ENV['MRUBY_ROOT']}/build/mrbgems/*")
+  Dir.glob("#{ENV['MRUBY_BUILD_DIR']}/mrbgems/*")
      .keep_if { |dir| File.directory? "#{dir}/.git" }
      .map! { |dir| [dir, `git symbolic-ref --short HEAD`.strip] }
      .each { |dir, branch| chdir(dir) { sh "git pull origin #{branch}" } }

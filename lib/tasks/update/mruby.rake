@@ -22,7 +22,7 @@
 
 desc 'update mruby'
 task 'update:mruby': :environment do
-  Dir.chdir(ENV['MRUBY_ROOT']) do
+  chdir(ENV['MRUBY_ROOT']) do
     sh "git pull origin #{`git symbolic-ref --short HEAD`.strip}"
   end if File.exist? "#{ENV['MRUBY_ROOT']}/.git"
 end

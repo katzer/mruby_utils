@@ -21,7 +21,7 @@
 # THE SOFTWARE.
 
 task 'mruby:environment' => 'rake:environment' do
-  Dir.chdir('mruby') { namespace(:mruby) { load 'Rakefile' } }
+  chdir('mruby') { namespace(:mruby) { load 'Rakefile' } }
   load 'mrbgem.rake'
   MRuby::Gem.current.tap { |spec| spec.build ||= MRuby::Build.current }.setup
 end
