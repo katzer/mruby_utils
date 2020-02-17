@@ -1,6 +1,6 @@
 ## Release Notes: _mruby_utils_
 
-### 1.4.5 (not yet released)
+### 1.4.5 (18.02.2020)
 
 - Fix `mruby:strip` did not recognice MacOS deplyoment target.
 
