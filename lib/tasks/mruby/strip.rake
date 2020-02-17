@@ -20,13 +20,15 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 # THE SOFTWARE.
 
+require 'mruby_utils/rake_tasks'
+
 task 'mruby:strip' => 'mruby:environment' do
   MRuby.targets.each_pair do |name, spec|
     Dir["#{spec.build_dir}/bin/#{MRuby::Gem.current.name}*"].each do |bin|
       if RbConfig::CONFIG['host_os'].include? 'darwin'
         sh "strip -u -r -arch all #{bin}"
       elsif name.include? 'darwin'
-        sh "x86_64-apple-darwin17-strip -u -r -arch all #{bin}"
+        sh "#{spec.cc.command.sub!(/clang$/, 'strip')} -u -r -arch all #{bin}"
       else
         sh "strip --strip-unneeded #{bin}"
       end

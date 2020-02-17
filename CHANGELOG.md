@@ -1,5 +1,9 @@
 ## Release Notes: _mruby_utils_
 
+### 1.4.5 (not yet released)
+
+- Fix `mruby:strip` did not recognice MacOS deplyoment target.
+
 ### 1.4.4 (09.08.2019)
 
 - Fixed `update:mgems` task.
