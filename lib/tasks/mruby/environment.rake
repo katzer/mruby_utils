@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The MIT License (MIT)
 #
 # Copyright (c) 2019 Sebastian Katzer
@@ -21,7 +23,8 @@
 # THE SOFTWARE.
 
 task 'mruby:environment' => 'rake:environment' do
-  chdir('mruby') { namespace(:mruby) { load 'Rakefile' } }
+  chdir('mruby', verbose: false) { namespace(:mruby) { load 'Rakefile' } }
+  task 'rake:test:run' => 'mruby:test:run'
   load 'mrbgem.rake'
   MRuby::Gem.current.tap { |spec| spec.build ||= MRuby::Build.current }.setup
 end

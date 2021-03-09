@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The MIT License (MIT)
 #
 # Copyright (c) 2019 Sebastian Katzer
@@ -23,8 +25,7 @@
 desc 'run all tests'
 task test: 'environment' do
   if in_a_docker_container? || ENV['MRUBY_CLI_LOCAL']
-    %w[setup tuneup].each { |t| Rake::Task["mruby:#{t}"].invoke }
-    chdir(ENV['MRUBY_ROOT']) { Rake::Task['mruby:test'].invoke }
+    %w[bintest mtest].each { |t| Rake::Task["test:#{t}"].invoke }
   else
     docker_run 'test'
   end

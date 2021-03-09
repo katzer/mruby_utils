@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The MIT License (MIT)
 #
 # Copyright (c) 2019 Sebastian Katzer
@@ -23,9 +25,8 @@
 desc 'run unit tests'
 task 'test:mtest' => :environment do
   if in_a_docker_container? || ENV['MRUBY_CLI_LOCAL']
-    %w[mruby:setup mruby:tuneup compile].each { |t| Rake::Task[t].invoke }
-    MRuby.each_target { |t| t.enable_bintest = false }
-    chdir(ENV['MRUBY_ROOT']) { MRuby.each_target { run_test if test_enabled? } }
+    %w[setup tuneup test:build].each { |t| Rake::Task["mruby:#{t}"].invoke }
+    each_mruby_target { run_test if test_enabled? }
   else
     docker_run 'mtest'
   end

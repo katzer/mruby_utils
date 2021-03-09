@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The MIT License (MIT)
 #
 # Copyright (c) 2019 Sebastian Katzer
@@ -31,6 +33,12 @@ end
 
 def docker_run(cmd, ver = ENV['MRUBY_VERSION'])
   sh "MRUBY_VERSION=#{ver} docker-compose run #{cmd}"
+end
+
+def each_mruby_target(&block)
+  chdir(ENV['MRUBY_ROOT'], verbose: false) do
+    MRuby.each_target(&block)
+  end
 end
 
 Dir["#{__dir__}/../tasks/**/*.rake"].each { |file| load file }

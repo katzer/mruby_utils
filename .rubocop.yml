@@ -23,8 +23,5 @@
 AllCops:
   TargetRubyVersion: 2.0.0
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 Documentation:
   Enabled: false

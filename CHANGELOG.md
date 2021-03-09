@@ -1,5 +1,12 @@
 ## Release Notes: _mruby_utils_
 
+### 3.0.0 (09.03.2020)
+
+- Added support mruby v3.
+- Dropped support for mruby v2.
+- Fixed `version` task to be non-verbose.
+- Updated `dockerize` task to generate a v3.9 compose file.
+
 ### 1.4.5 (18.02.2020)
 
 - Fix `mruby:strip` did not recognice MacOS deplyoment target.

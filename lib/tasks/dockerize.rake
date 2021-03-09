@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The MIT License (MIT)
 #
 # Copyright (c) 2019 Sebastian Katzer
@@ -24,30 +26,35 @@ desc 'create docker-compose.yml file'
 task dockerize: 'docker-compose.yml'
 
 file 'docker-compose.yml' do
-  IO.write 'docker-compose.yml', <<-CONTENT
-compile: &defaults
-  image: appplant/mruby-cli
-  working_dir: /home/mruby/code
-  volumes:
-    - .:/home/mruby/code:rw
-  command: rake compile
-test:
-  <<: *defaults
-  command: rake test
-bintest:
-  <<: *defaults
-  command: rake test:bintest
-mtest:
-  <<: *defaults
-  command: rake test:mtest
-clean:
-  <<: *defaults
-  command: rake clean
-shell:
-  <<: *defaults
-  command: bash
-release:
-  <<: *defaults
-  command: rake release
+  IO.write 'docker-compose.yml', <<~CONTENT
+    version: "3.9"
+
+    services:
+      compile: &defaults
+        image: appplant/mruby-cli
+        working_dir: /home/mruby/code
+        volumes:
+          - .:/home/mruby/code:rw
+        environment:
+          MRUBY_VERSION: ${MRUBY_VERSION}
+        command: rake compile
+      test:
+        <<: *defaults
+        command: rake test
+      bintest:
+        <<: *defaults
+        command: rake test:bintest
+      mtest:
+        <<: *defaults
+        command: rake test:mtest
+      clean:
+        <<: *defaults
+        command: rake clean
+      shell:
+        <<: *defaults
+        command: bash
+      release:
+        <<: *defaults
+        command: rake release
   CONTENT
 end

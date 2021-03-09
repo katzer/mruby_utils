@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The MIT License (MIT)
 #
 # Copyright (c) 2019 Sebastian Katzer
@@ -26,11 +28,11 @@ task 'mruby:strip' => 'mruby:environment' do
   MRuby.targets.each_pair do |name, spec|
     Dir["#{spec.build_dir}/bin/#{MRuby::Gem.current.name}*"].each do |bin|
       if RbConfig::CONFIG['host_os'].include? 'darwin'
-        sh "strip -u -r -arch all #{bin}"
+        sh(*%W[strip -u -r -arch all #{bin}])
       elsif name.include? 'darwin'
-        sh "#{spec.cc.command.sub!(/clang$/, 'strip')} -u -r -arch all #{bin}"
+        sh(*%W[#{spec.cc.command.sub!(/clang$/, 'strip')} -u -r -arch all #{bin}])
       else
-        sh "strip --strip-unneeded #{bin}"
+        sh(*%W[strip --strip-unneeded #{bin}])
       end
     end
   end

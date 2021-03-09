@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The MIT License (MIT)
 #
 # Copyright (c) 2019 Sebastian Katzer
@@ -22,18 +24,18 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'mruby_utils'
-  spec.version       = '1.4.5'
+  spec.version       = '3.0.0'
   spec.authors       = ['Sebastián Katzer']
-  spec.email         = ['katzer@appplant.de']
+  spec.email         = ['katzer.sebastian@googlemail.com']
 
   spec.summary       = 'Utilities for developing mruby projects'
   spec.description   = 'Rake tasks and build helpers for mruby'
-  spec.homepage      = 'https://github.com/appPlant/mruby_utils'
+  spec.homepage      = 'https://github.com/katzer/mruby_utils'
   spec.license       = 'MIT'
 
   spec.metadata['homepage_uri']    = spec.homepage
-  spec.metadata['source_code_uri'] = 'https://github.com/appPlant/mruby_utils.git'
-  spec.metadata['changelog_uri']   = 'https://github.com/appPlant/mruby_utils/blob/master/CHANGELOG.md'
+  spec.metadata['source_code_uri'] = 'https://github.com/katzer/mruby_utils.git'
+  spec.metadata['changelog_uri']   = 'https://github.com/katzer/mruby_utils/blob/master/CHANGELOG.md'
 
   spec.files         = Dir['lib/**/*']
   spec.require_paths = ['lib']

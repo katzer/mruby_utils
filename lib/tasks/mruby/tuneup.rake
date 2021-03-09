@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # The MIT License (MIT)
 #
 # Copyright (c) 2019 Sebastian Katzer
@@ -35,7 +37,9 @@ task 'mruby:tuneup' => 'mruby:environment' do
        .reject { |conf| conf.bintest_enabled? || conf.test_enabled? }
        .each { |conf| conf.mrbc.compile_options << ' --remove-lv' }
 
-  Rake::Task['mruby:all'].prerequisites.keep_if do |p|
-    MRuby.targets.any? { |(n)| p =~ %r{mruby/bin|/#{n}/} }
+  task 'build' => MRuby.each_target.flat_map(&:products)
+
+  Rake::Task['mruby:gensym'].prerequisites.keep_if do |p|
+    MRuby.targets.any? { |(target_name)| p.include? target_name }
   end
 end
