@@ -1,6 +1,10 @@
 ## Release Notes: _mruby_utils_
 
-### 3.0.0 (09.03.2020)
+### 3.0.1 (09.05.2021)
+
+- Fix `sshd` task did not start agent.
+
+### 3.0.0 (09.03.2021)
 
 - Added support mruby v3.
 - Dropped support for mruby v2.

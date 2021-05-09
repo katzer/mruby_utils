@@ -23,4 +23,4 @@
 # THE SOFTWARE.
 
 desc 'start sshd'
-task(:sshd) { sh '. $HOME/.sshdrc' }
+task(:sshd) { sh '. $HOME/.sshrc' }
