@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mruby_utils (3.0.3)
+    mruby_utils (3.0.4)
       rake (>= 11.0.0)
 
 GEM
@@ -17,4 +17,4 @@ DEPENDENCIES
   mruby_utils!
 
 BUNDLED WITH
-   2.3.7
+   2.3.17

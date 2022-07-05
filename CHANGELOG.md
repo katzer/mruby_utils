@@ -1,8 +1,9 @@
 ## Release Notes: _mruby_utils_
 
-### 3.0.3 (05.07.2022)
+### 3.0.4 (05.07.2022)
 
 - Fix github repo clone uri.
+- Fix running in docker detection.
 
 ### 3.0.1 (09.05.2021)
 
