@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    mruby_utils (3.0.2)
+    mruby_utils (3.0.3)
       rake (>= 11.0.0)
 
 GEM
