@@ -1,5 +1,9 @@
 ## Release Notes: _mruby_utils_
 
+### 3.0.2 (05.07.2022)
+
+- Fix github repo clone uri.
+
 ### 3.0.1 (09.05.2021)
 
 - Fix `sshd` task did not start agent.
