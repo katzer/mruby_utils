@@ -38,6 +38,7 @@ task 'mruby:tuneup' => 'mruby:environment' do
        .each { |conf| conf.mrbc.compile_options << ' --remove-lv' }
 
   task 'build' => MRuby.each_target.flat_map(&:products)
+  task 'all' => 'mruby:all'
 
   Rake::Task['mruby:gensym'].prerequisites.keep_if do |p|
     MRuby.targets.any? { |(target_name)| p.include? target_name }
