@@ -39,6 +39,8 @@ task release: 'environment' do
       bin  = "#{build_dir}/bin/#{exefile(spec.name)}"
       arch = "#{app_name}-#{name}"
 
+      next unless File.exist? bin
+
       mkdir_p name
       cp bin, name
 
