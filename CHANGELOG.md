@@ -1,5 +1,9 @@
 ## Release Notes: _mruby_utils_
 
+### 3.2.0 (25.08.2022)
+
+- Fix compatibility with mruby v3.2.0
+
 ### 3.1.0 (05.07.2022)
 
 - Fix running in docker detection.
