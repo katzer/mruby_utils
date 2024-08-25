@@ -38,7 +38,16 @@ task 'mruby:tuneup' => 'mruby:environment' do
        .each { |conf| conf.mrbc.compile_options << ' --remove-lv' }
 
   task 'build' => MRuby.each_target.flat_map(&:products)
-  task 'all' => 'mruby:all'
+
+  rule '' do |t|
+    mrb_task_name = t.name.sub('rake:', 'mruby:')
+
+    if Rake::Task.task_defined? mrb_task_name
+      Rake::Task[mrb_task_name].invoke
+    else
+      raise "Don't know how to build task '#{t.name}'"
+    end
+  end
 
   Rake::Task['mruby:gensym'].prerequisites.keep_if do |p|
     MRuby.targets.any? { |(target_name)| p.include? target_name }
