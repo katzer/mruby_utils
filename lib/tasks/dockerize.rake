@@ -27,8 +27,6 @@ task dockerize: 'docker-compose.yml'
 
 file 'docker-compose.yml' do
   IO.write 'docker-compose.yml', <<~CONTENT
-    version: "3.9"
-
     services:
       compile: &defaults
         image: appplant/mruby-cli
