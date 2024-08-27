@@ -38,6 +38,7 @@ task 'mruby:tuneup' => 'mruby:environment' do
        .each { |conf| conf.mrbc.compile_options << ' --remove-lv' }
 
   task 'build' => MRuby.each_target.flat_map(&:products)
+  task 'all' => 'mruby:all'
 
   rule '' do |t|
     mrb_task_name = t.name.sub('rake:', 'mruby:')
