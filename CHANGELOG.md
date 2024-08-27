@@ -1,5 +1,9 @@
 ## Release Notes: _mruby_utils_
 
+### 3.2.1 (27.08.2022)
+
+- Fixed `test:mtest` task not working with v3.2.0
+
 ### 3.2.0 (25.08.2022)
 
 - Fix compatibility with mruby v3.2.0
